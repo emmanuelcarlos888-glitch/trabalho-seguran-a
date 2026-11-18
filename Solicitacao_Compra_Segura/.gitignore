@@ -1,0 +1,8 @@
+chaves/
+.venv/
+__pycache__/
+*.pem
+/aviso*.json
+
+dados/
+*.db
