@@ -1,0 +1,30 @@
+> python responsavel.py gerar-chaves
+Chaves prontas. Configure o mural com responsavel_publica.pem por um canal confiável.
+Código de saída: 0 (esperado: 0)
+
+> python responsavel.py enviar aviso.json
+Responsável — digite a solicitação: Solicitação assinada e exportado para aviso.json.
+Código de saída: 0 (esperado: 0)
+
+TESTE 1 — aviso original
+> python compras.py aviso.json
+ACEITO: assinatura válida.
+Solicitação verificada: Material: papel A4 | Quantidade: 10 resmas | Justificativa: reposição do estoque.
+Código de saída: 0 (esperado: 0)
+
+TESTE 2 — conteúdo alterado, assinatura preservada
+> python compras.py aviso_adulterado.json
+REJEITADO: assinatura inválida. Solicitação bloqueada.
+Código de saída: 1 (esperado: 1)
+
+TESTE 3 — conteúdo preservado, assinatura feita por outra chave
+> python compras.py aviso_forjado.json
+REJEITADO: assinatura inválida. Solicitação bloqueada.
+Código de saída: 1 (esperado: 1)
+
+TESTE 4 — pacote JSON incompleto
+> python compras.py aviso_invalido.json
+ERRO: solicitação bloqueada. Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Código de saída: 2 (esperado: 2)
+
+Todos os testes passaram.

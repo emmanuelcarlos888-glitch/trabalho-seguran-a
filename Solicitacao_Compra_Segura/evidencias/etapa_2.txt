@@ -1,0 +1,9 @@
+PASSOU — login correto.
+PASSOU — senha incorreta rejeitada.
+PASSOU — usuário inexistente rejeitado.
+PASSOU — cadastro duplicado rejeitado.
+PASSOU — mesma senha tem salts e hashes diferentes.
+Registro fictício protegido: $argon2id$v=19$m=65536,t=3,p=4$Jl3K5aYHBYeDcdNJ4uFV/A$PZP5fJznIiIfg7tCcKGmFx1tQMm0NYvlXfjTwxGa/9M
+PASSOU — cadastro persistiu entre conexões.
+PASSOU — senha curta rejeitada.
+Todos os testes da etapa 2 passaram.
