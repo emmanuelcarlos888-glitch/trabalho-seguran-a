@@ -1,5 +1,6 @@
 """Cadastro persistente e verificação de senhas com Argon2id."""
 import sqlite3
+from contextlib import contextmanager
 from pathlib import Path
 from argon2 import PasswordHasher, Type
 from argon2.exceptions import VerificationError, InvalidHashError
@@ -9,11 +10,16 @@ HASHER = PasswordHasher(time_cost=3, memory_cost=65536, parallelism=4,
                         hash_len=32, salt_len=16, type=Type.ID)
 
 
+@contextmanager
 def conectar():
     BANCO.parent.mkdir(parents=True, exist_ok=True)
     conexao = sqlite3.connect(BANCO)
-    conexao.execute("CREATE TABLE IF NOT EXISTS usuarios (usuario TEXT PRIMARY KEY, senha_hash TEXT NOT NULL)")
-    return conexao
+    try:
+        with conexao:
+            conexao.execute("CREATE TABLE IF NOT EXISTS usuarios (usuario TEXT PRIMARY KEY, senha_hash TEXT NOT NULL)")
+            yield conexao
+    finally:
+        conexao.close()
 
 
 def cadastrar(usuario, senha):
