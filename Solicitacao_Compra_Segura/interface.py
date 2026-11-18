@@ -114,7 +114,7 @@ def mostrar_login(janela):
     ttk.Label(painel, text="Usuário").pack(anchor="w")
     usuario = ttk.Entry(painel, width=45)
     usuario.pack(pady=8)
-    ttk.Label(painel, text="Senha • 15 a 128 caracteres no cadastro").pack(anchor="w")
+    ttk.Label(painel, text="Senha • 6 a 128 caracteres no cadastro").pack(anchor="w")
     senha = ttk.Entry(painel, width=45, show="*")
     senha.pack(pady=8)
     retorno = tk.StringVar()

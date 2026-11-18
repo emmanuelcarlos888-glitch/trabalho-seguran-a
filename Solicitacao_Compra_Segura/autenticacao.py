@@ -26,8 +26,8 @@ def cadastrar(usuario, senha):
     usuario = usuario.strip().casefold()
     if not 3 <= len(usuario) <= 80:
         raise ValueError("O usuário deve ter entre 3 e 80 caracteres.")
-    if not 15 <= len(senha) <= 128:
-        raise ValueError("A senha deve ter entre 15 e 128 caracteres.")
+    if not 6 <= len(senha) <= 128:
+        raise ValueError("A senha deve ter entre 6 e 128 caracteres.")
     protegido = HASHER.hash(senha)
     try:
         with conectar() as conexao:
